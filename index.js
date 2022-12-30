@@ -1,6 +1,11 @@
 require("dotenv/config");
 
-const { Client, GatewayIntentBits, Collection } = require("discord.js");
+const {
+  Client,
+  GatewayIntentBits,
+  Collection,
+  Partials,
+} = require("discord.js");
 
 const client = new Client({
   intents: [
@@ -8,11 +13,12 @@ const client = new Client({
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
   ],
+  partials: [Object.keys(Partials)],
 });
 client.config = require("./config.json");
 client.commands = new Collection();
 
-["commands", "events"].forEach((handler) => {
+["commands", "events", "features", "collections"].forEach((handler) => {
   require(`./handlers/${handler}`)(client);
 });
 
