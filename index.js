@@ -17,9 +17,12 @@ const client = new Client({
 });
 client.config = require("./config.json");
 client.commands = new Collection();
+client.slashCommands = new Collection();
 
-["commands", "events", "features", "collections"].forEach((handler) => {
-  require(`./handlers/${handler}`)(client);
-});
+["commands", "slashCommands", "events", "features", "collections"].forEach(
+  (handler) => {
+    require(`./handlers/${handler}`)(client);
+  }
+);
 
 client.login(process.env.TOKEN);
