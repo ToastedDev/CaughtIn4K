@@ -3,8 +3,11 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = async (client, message) => {
   if (!message.guild || message.author.bot) return;
 
-  // TODO: add server specific prefix
-  const prefix = client.config.prefix;
+  client.settings.ensure(message.guild.id, {
+    prefix: client.config.prefix,
+  });
+
+  const prefix = client.settings.get(message.guild.id, "prefix");
 
   const prefixRegex = new RegExp(
     `^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`
@@ -36,6 +39,17 @@ module.exports = async (client, message) => {
     return message.channel.send({
       embeds: [
         new EmbedBuilder().setDescription("Unknown command.").setColor("Red"),
+      ],
+    });
+  if (
+    command.userPermissions &&
+    !message.member.permissions.has(command.userPermissions)
+  )
+    return message.channel.send({
+      embeds: [
+        new EmbedBuilder()
+          .setDescription("You don't have permission to run that command.")
+          .setColor("Red"),
       ],
     });
 

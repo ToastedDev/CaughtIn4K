@@ -18,6 +18,10 @@ const client = new Client({
 client.config = require("./config.json");
 client.commands = new Collection();
 client.slashCommands = new Collection();
+client.settings = new (require("enmap"))({
+  name: "db",
+  dataDir: "./db",
+});
 
 ["commands", "slashCommands", "events", "features", "collections"].forEach(
   (handler) => {
