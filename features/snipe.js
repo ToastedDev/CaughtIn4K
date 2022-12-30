@@ -5,6 +5,12 @@ module.exports = (client) => {
   client.on("messageDelete", (message) => {
     if (message.author.bot) return;
 
+    client.settings.ensure(message.author.id, {
+      optedout: false,
+    });
+    const optedout = client.settings.get(message.author.id, "optedout");
+    if (optedout) return;
+
     let snipes = client.snipes.get(message.channel.id) || [];
     if (snipes.length > 19) snipes = snipes.slice(0, 19);
 
