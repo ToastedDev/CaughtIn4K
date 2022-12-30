@@ -1,0 +1,12 @@
+{
+  "name": "caughtin4k",
+  "version": "1.0.0",
+  "description": "Catching people's weird moments in 4K.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
