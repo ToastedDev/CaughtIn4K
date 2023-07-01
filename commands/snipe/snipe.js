@@ -2,6 +2,7 @@ const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
 
 module.exports = {
   name: "snipe",
+  aliases: ["s"],
   description: "Snipes a deleted message in this channel.",
   /**
    * @param {{ client: import('discord.js').Client, message: import('discord.js').Message, args: string[] }} params
