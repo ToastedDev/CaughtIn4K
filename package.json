@@ -4,18 +4,26 @@
   "description": "Catching people's weird moments in 4K.",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "dev": "nodemon ."
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "rebuild-and-start": "rimraf ./dist && tsc && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^14.7.1",
+    "discord.js": "^14.11.0",
     "dotenv": "^16.0.3",
-    "enmap": "^5.9.5"
+    "enmap": "^5.9.5",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "@types/node": "^20.3.3",
+    "nodemon": "^2.0.22",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   }
 }
