@@ -77,7 +77,7 @@ export class BotClient<Ready extends boolean = boolean> extends Client<Ready> {
           .filter((file) => file.endsWith("js") || file.endsWith("ts"));
 
         for (const file of slashCommandFiles) {
-          const cmd = await import(`../commands/${dir}/${file}`)
+          const cmd = await import(`../slashCommands/${dir}/${file}`)
             .then((x) => x?.default)
             .catch(() => null);
 

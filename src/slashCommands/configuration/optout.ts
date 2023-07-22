@@ -6,7 +6,7 @@ import {
 import { BotClient } from "../../structures/BotClient";
 import { SlashCommand } from "../../structures/Command";
 
-export class OptOut extends SlashCommand {
+export default class OptOut extends SlashCommand {
   constructor(client: BotClient) {
     super(
       client,
